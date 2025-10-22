@@ -1,5 +1,7 @@
 <script lang="ts" setup></script>
 
 <template>
-	<slot />
+	<div class="bg-slate-200 h-screen">
+		<slot />
+	</div>
 </template>
