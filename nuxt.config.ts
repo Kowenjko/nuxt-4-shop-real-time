@@ -7,6 +7,7 @@ export default defineNuxtConfig({
 		'@pinia/nuxt',
 		'nuxt-typed-router',
 		'@nuxt/image',
+		'nuxt-nodemailer',
 	],
 
 	components: [
@@ -17,6 +18,17 @@ export default defineNuxtConfig({
 	],
 	pinia: {
 		storesDirs: ['./stores/**'],
+	},
+
+	nodemailer: {
+		from: '"Nuxt 4 Shop" <noreply@app.com>',
+		host: process.env.MAIL_HOST,
+		port: Number(process.env.MAIL_PORT),
+		secure: false,
+		auth: {
+			user: process.env.MAIL_TRAP_USER,
+			pass: process.env.MAIL_TRAP_PASSWORD,
+		},
 	},
 
 	runtimeConfig: {
