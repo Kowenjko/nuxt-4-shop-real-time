@@ -9,7 +9,17 @@ export default defineNuxtConfig({
 		'@nuxt/image',
 		'nuxt-nodemailer',
 		'@vueuse/nuxt',
+		'@unlok-co/nuxt-stripe',
+		'@nuxt/icon',
 	],
+	nitro: {
+		replace: {
+			'import * as process': 'import * as processUnused',
+		},
+		experimental: {
+			websocket: true,
+		},
+	},
 
 	components: [
 		{
@@ -17,10 +27,14 @@ export default defineNuxtConfig({
 			pathPrefix: false,
 		},
 	],
+	icon: {
+		mode: 'css',
+		cssLayer: 'base',
+	},
 	pinia: {
 		storesDirs: ['./stores/**'],
 	},
-
+	tailwindcss: { exposeConfig: true },
 	nodemailer: {
 		from: '"Nuxt 4 Shop" <noreply@app.com>',
 		host: process.env.MAIL_HOST,
@@ -39,5 +53,16 @@ export default defineNuxtConfig({
 		DATABASE_URL: process.env.DATABASE_URL,
 		DIRECT_URL: process.env.DIRECT_URL,
 		public: {},
+	},
+	stripe: {
+		// Server
+		server: {
+			key: process.env.STRIPE_SECRET_KEY,
+			options: {},
+		},
+		client: {
+			key: process.env.STRIPE_PUBLIC_KEY,
+			options: {},
+		},
 	},
 })
