@@ -8,6 +8,7 @@ export default defineNuxtConfig({
 		'nuxt-typed-router',
 		'@nuxt/image',
 		'nuxt-nodemailer',
+		'@vueuse/nuxt',
 	],
 
 	components: [
